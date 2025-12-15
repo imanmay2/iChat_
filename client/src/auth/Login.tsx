@@ -1,7 +1,13 @@
+
+
+
 const Login = () => {
   return (
-    <div>
-        <h2>Login Page</h2>
+    <div className="main">
+        <div>B1</div>
+        <div>B2</div>
+        <div>B3</div>
+        <div>B4</div>
     </div>
   )
 };
