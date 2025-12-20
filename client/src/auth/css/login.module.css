@@ -30,7 +30,11 @@ input{
     border-radius:8px;
 }
 
-.input:focus{
+hr{
+    color: grey;
+}
+
+input:focus{
     outline:rgb(5, 128, 170);
     border:1px solid rgb(5, 128, 170);
 }
