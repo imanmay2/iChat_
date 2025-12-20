@@ -13,7 +13,7 @@ const Login = (): any => {
         <input type="text" id="email"  placeholder="&nbsp;&nbsp;xyz@yahoo.com"/>
 
         <br />
-        <br />
+        <br /> 
 
         <label htmlFor="Password">Password</label> <br />
         <input type="password" id="Password"  placeholder="&nbsp;&nbsp;Type your password..."/>
