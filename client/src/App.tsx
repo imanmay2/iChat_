@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import AuthPage from "./auth/authPage";
+import AuthPage from "./auth/AuthPage";
 
 const App = () => {
   return (

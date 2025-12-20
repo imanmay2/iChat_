@@ -1,0 +1,18 @@
+.main {
+    height:100vh;
+    width:100vw;
+    background: linear-gradient(135deg, #030712, #0A1A33, #0B255A);
+    color:whitesmoke;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    gap:2em;
+    padding-top:7em;
+   
+}
+
+
+
+img{
+    border-radius:32%;
+}
