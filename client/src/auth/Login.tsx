@@ -1,9 +1,32 @@
 import styles from "./css/login.module.css";
 import React from "react";
-type Props={
-  setIsLogin:React.Dispatch<React.SetStateAction<boolean>>;
-}
-const Login = ({setIsLogin}: Props): any => {
+import type {Props} from '../types';
+import type { loginCredentials } from "../types";
+
+
+
+const Login = ({ setIsLogin }: Props): any => {
+
+  let [loginData, setLoginData] = React.useState<loginCredentials>({
+    email: "",
+    password: ""
+  });
+
+
+  let handleChange=(e:React.ChangeEvent<HTMLInputElement>)=>{
+    let {name,value}=e.target;
+    setLoginData((currData:loginCredentials)=>{
+      return{
+        ...currData,[name]:value
+      }
+    })
+  }
+
+  let handleSubmit=(e:React.FormEvent<HTMLFormElement>):void=>{
+    e.preventDefault();
+    console.log(loginData);
+  }
+
   return (
     <div className={styles.main}>
       <div>
@@ -12,23 +35,23 @@ const Login = ({setIsLogin}: Props): any => {
 
 
       {/* Form for signing in */}
-      <div className={styles.form}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <label htmlFor="email">Email</label> <br />
-        <input type="text" id="email"  placeholder="&nbsp;&nbsp;xyz@yahoo.com"/>
+        <input type="text" id="email" placeholder="&nbsp;&nbsp;xyz@yahoo.com" name="email" value={loginData.email} onChange={handleChange}/>
 
         <br />
-        <br /> 
+        <br />
 
         <label htmlFor="Password">Password</label> <br />
-        <input type="password" id="Password"  placeholder="&nbsp;&nbsp;********"/>
+        <input type="password" id="Password" placeholder="&nbsp;&nbsp;********" name="password" value={loginData.password} onChange={handleChange}/>
 
         <br /><br />
-        <p className={styles.forgotPassword}>Forgot Password?</p> <br />  
-        <button className={styles.btn}>Sign In</button> <br /><br />
+        <p className={styles.forgotPassword}>Forgot Password?</p> <br />
+        <button className={styles.btn} type="submit">Sign In</button> <br /><br />
         <br />
-        <hr/> <br />
-        <p className={styles.style1}>Don't have an account ? <span className={styles.style2} onClick={()=>setIsLogin(false)}>Sign Up</span></p> <br />
-      </div>
+        <hr /> <br />
+        <p className={styles.style1}>Don't have an account ? <span className={styles.style2} onClick={() => setIsLogin(false)}>Sign Up</span></p> <br />
+      </form>
     </div>
   )
 }

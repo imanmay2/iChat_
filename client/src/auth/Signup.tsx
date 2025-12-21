@@ -1,8 +1,6 @@
 import styles from './css/Signup.module.css';
 import React from 'react';
-interface Props{
-    setIsLogin:React.Dispatch<React.SetStateAction<boolean>>
-}
+import type {Props} from '../types';
 
 const Signup = ({setIsLogin}: Props) => {
   return (
