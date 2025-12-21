@@ -1,0 +1,8 @@
+.main{
+    display:flex;
+    flex-direction:row;
+    background: linear-gradient(135deg, #030712, #0A1A33, #0B255A);
+    min-height:100vh;
+    min-width:100vh;
+    color:whitesmoke;
+}

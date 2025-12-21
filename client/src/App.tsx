@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import AuthPage from "./components/AuthPage";
-
+import User from "./components/UserChat";
 const App = () => {
   return (
     <Routes>
