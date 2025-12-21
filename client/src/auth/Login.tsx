@@ -16,7 +16,7 @@ const Login = (): any => {
         <br /> 
 
         <label htmlFor="Password">Password</label> <br />
-        <input type="password" id="Password"  placeholder="&nbsp;&nbsp;Type your password..."/>
+        <input type="password" id="Password"  placeholder="&nbsp;&nbsp;********"/>
 
         <br /><br />
         <p className={styles.forgotPassword}>Forgot Password?</p> <br />  
