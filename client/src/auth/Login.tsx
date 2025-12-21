@@ -1,6 +1,6 @@
 import styles from "./css/login.module.css";
 import React from "react";
-import type {Props} from '../types';
+import type { Props } from '../types';
 import type { loginCredentials } from "../types";
 
 
@@ -13,18 +13,22 @@ const Login = ({ setIsLogin }: Props): any => {
   });
 
 
-  let handleChange=(e:React.ChangeEvent<HTMLInputElement>)=>{
-    let {name,value}=e.target;
-    setLoginData((currData:loginCredentials)=>{
-      return{
-        ...currData,[name]:value
+  let handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let { name, value } = e.target;
+    setLoginData((currData: loginCredentials) => {
+      return {
+        ...currData, [name]: value
       }
     })
   }
 
-  let handleSubmit=(e:React.FormEvent<HTMLFormElement>):void=>{
+  let handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     console.log(loginData);
+    setLoginData({
+      email: "",
+      password: ""
+    });
   }
 
   return (
@@ -37,13 +41,13 @@ const Login = ({ setIsLogin }: Props): any => {
       {/* Form for signing in */}
       <form className={styles.form} onSubmit={handleSubmit}>
         <label htmlFor="email">Email</label> <br />
-        <input type="text" id="email" placeholder="&nbsp;&nbsp;xyz@yahoo.com" name="email" value={loginData.email} onChange={handleChange}/>
+        <input type="text" id="email" placeholder="&nbsp;&nbsp;xyz@yahoo.com" name="email" value={loginData.email} onChange={handleChange} />
 
         <br />
         <br />
 
         <label htmlFor="Password">Password</label> <br />
-        <input type="password" id="Password" placeholder="&nbsp;&nbsp;********" name="password" value={loginData.password} onChange={handleChange}/>
+        <input type="password" id="Password" placeholder="&nbsp;&nbsp;********" name="password" value={loginData.password} onChange={handleChange} />
 
         <br /><br />
         <p className={styles.forgotPassword}>Forgot Password?</p> <br />

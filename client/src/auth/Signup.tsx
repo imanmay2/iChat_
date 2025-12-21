@@ -1,31 +1,63 @@
 import styles from './css/Signup.module.css';
-import React from 'react';
 import type {Props} from '../types';
-
+import type { registerCredentials } from '../types';
+import { useState } from 'react';
 const Signup = ({setIsLogin}: Props) => {
+
+  let [registerData,setRegisterData]=useState<registerCredentials>({
+    name:"",
+    email:"",
+    password:"",
+    confirmPassword:""
+  });
+
+
+  let handleChange=(e:React.ChangeEvent<HTMLInputElement>)=>{
+    let {name,value}=e.currentTarget;
+
+    setRegisterData((currData:registerCredentials)=>{
+      return{
+        ...currData,[name]:value
+      }
+    })
+  }
+  
+
+  let handleSubmit=(e:React.FormEvent<HTMLFormElement>)=>{
+    e.preventDefault();
+    console.log(registerData);
+    setRegisterData({
+    name:"",
+    email:"",
+    password:"",
+    confirmPassword:""
+  });
+  }
+
+
   return (
     <div className={styles.main}>
     Create Account<span className={styles.signupText}>Join iChat today!</span>
 
 
      {/* Signup Form */}
-     <div className={styles.signupForm}>
-        <label htmlFor="username">Username</label>
-        <input type="text" name="username" className={styles.input} placeholder='&nbsp;&nbsp;imanmay2_'/>
+     <form className={styles.signupForm} onSubmit={handleSubmit}>
+        <label htmlFor="username">Name</label>
+        <input type="text" name="name" className={styles.input} placeholder='&nbsp;&nbsp;Manmay Chakraborty' onChange={handleChange}/>
         <br />
         <label htmlFor="email">Email</label>
-        <input type="text" name="email" className={styles.input} placeholder='&nbsp;&nbsp;imanmay2@gmail.com'/>
+        <input type="text" name="email" className={styles.input} placeholder='&nbsp;&nbsp;imanmay2@gmail.com' onChange={handleChange}/>
         <br />
         <label htmlFor="password">Password</label>
-        <input type="password" name="password" className={styles.input}  placeholder='&nbsp;&nbsp;********'/>
+        <input type="password" name="password" className={styles.input}  placeholder='&nbsp;&nbsp;********' onChange={handleChange}/>
         <br />
         <label htmlFor="c_password">Confirm Password</label>
-        <input type="password" name="c_password" className={styles.input}   placeholder='&nbsp;&nbsp;********'/><br />
+        <input type="password" name="c_password" className={styles.input} placeholder='&nbsp;&nbsp;********' onChange={handleChange}/><br />
         <br /> 
         <button className={styles.signupButton}>Create Account</button> <br />
         <br /><hr /> <br />
         <p className={styles.loginText}>Already have an account? <span className={styles.style2} onClick={()=>setIsLogin(true)}>Log In</span></p>
-     </div>
+     </form>
   </div>
   )
 }
