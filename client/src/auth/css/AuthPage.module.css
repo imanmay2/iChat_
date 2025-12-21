@@ -1,14 +1,13 @@
 .main {
-    height:100vh;
-    width:100vw;
+    height:100%;
+    width:100%;
     background: linear-gradient(135deg, #030712, #0A1A33, #0B255A);
     color:whitesmoke;
     display:flex;
     flex-direction: column;
     align-items: center;
     gap:2em;
-    padding-top:7em;
-   
+    padding-top:4em;
 }
 
 
