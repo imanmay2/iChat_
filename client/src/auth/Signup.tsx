@@ -1,5 +1,10 @@
 import styles from './css/Signup.module.css';
-const Signup = () => {
+import React from 'react';
+interface Props{
+    setIsLogin:React.Dispatch<React.SetStateAction<boolean>>
+}
+
+const Signup = ({setIsLogin}: Props) => {
   return (
     <div className={styles.main}>
     Create Account<span className={styles.signupText}>Join iChat today!</span>
@@ -20,8 +25,8 @@ const Signup = () => {
         <input type="password" name="c_password" className={styles.input}   placeholder='&nbsp;&nbsp;********'/><br />
         <br /> 
         <button className={styles.signupButton}>Create Account</button> <br />
-        <br /><hr /> <br /> 
-        <p className={styles.loginText}>Already have an account? <span className={styles.style2}>Log In</span></p>
+        <br /><hr /> <br />
+        <p className={styles.loginText}>Already have an account? <span className={styles.style2} onClick={()=>setIsLogin(true)}>Log In</span></p>
      </div>
   </div>
   )

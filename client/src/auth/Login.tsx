@@ -1,5 +1,9 @@
 import styles from "./css/login.module.css";
-const Login = (): any => {
+import React from "react";
+type Props={
+  setIsLogin:React.Dispatch<React.SetStateAction<boolean>>;
+}
+const Login = ({setIsLogin}: Props): any => {
   return (
     <div className={styles.main}>
       <div>
@@ -23,7 +27,7 @@ const Login = (): any => {
         <button className={styles.btn}>Sign In</button> <br /><br />
         <br />
         <hr/> <br />
-        <p className={styles.style1}>Don't have an account ? <span className={styles.style2}>Sign Up</span></p> <br />
+        <p className={styles.style1}>Don't have an account ? <span className={styles.style2} onClick={()=>setIsLogin(false)}>Sign Up</span></p> <br />
       </div>
     </div>
   )
