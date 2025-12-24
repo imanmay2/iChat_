@@ -13,4 +13,12 @@ interface registerCredentials {
 interface Props{
     setIsLogin:React.Dispatch<React.SetStateAction<boolean>>
 }
-export type {loginCredentials, registerCredentials,Props};
+
+
+interface SideBarChats{
+  name: string,
+  lastMsg:string,
+  lastTime:string,
+  shortFormName:string
+}
+export type {loginCredentials, registerCredentials,Props,SideBarChats};

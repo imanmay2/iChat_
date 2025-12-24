@@ -4,6 +4,7 @@
     background-color: #010710;
     height:100vh;
     width:25%;
+    border-radius:16px;
 }
 
 .imgLogo{
@@ -34,4 +35,20 @@
 
 .exit:hover{
     color:rgb(128, 125, 125);
+}
+
+.search{
+    border:1px solid grey;
+    border-radius: 16px;
+    margin-left:1.5em;
+    padding-left:1em;
+    height:8%;
+    width:88%;
+}
+
+.contacts{
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    
 }
