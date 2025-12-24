@@ -6,7 +6,7 @@
     width:25%;
 }
 
-img{
+.imgLogo{
     height:90%;
     width:14%;
 }
@@ -35,4 +35,3 @@ img{
 .exit:hover{
     color:rgb(128, 125, 125);
 }
-
