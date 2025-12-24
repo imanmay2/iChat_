@@ -2,11 +2,11 @@ import styles from "./css/login.module.css";
 import React from "react";
 import type { Props } from '../types';
 import type { loginCredentials } from "../types";
-
+import { useNavigate } from "react-router-dom";
 
 
 const Login = ({ setIsLogin }: Props): any => {
-
+  let navigate=useNavigate();
   let [loginData, setLoginData] = React.useState<loginCredentials>({
     email: "",
     password: ""
@@ -25,6 +25,7 @@ const Login = ({ setIsLogin }: Props): any => {
   let handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     console.log(loginData);
+    navigate(`/chat/${loginData.email}`,{state:loginData});
     setLoginData({
       email: "",
       password: ""

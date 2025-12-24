@@ -2,8 +2,11 @@ import styles from './css/Signup.module.css';
 import type {Props} from '../types';
 import type { registerCredentials } from '../types';
 import { useState } from 'react';
-const Signup = ({setIsLogin}: Props) => {
+import { useNavigate } from 'react-router-dom';
 
+
+const Signup = ({setIsLogin}: Props) => {
+  let navigate=useNavigate();
   let [registerData,setRegisterData]=useState<registerCredentials>({
     name:"",
     email:"",
@@ -26,6 +29,7 @@ const Signup = ({setIsLogin}: Props) => {
   let handleSubmit=(e:React.FormEvent<HTMLFormElement>)=>{
     e.preventDefault();
     console.log(registerData);
+    navigate(`/chat/${registerData.email}`,{state:registerData});
     setRegisterData({
     name:"",
     email:"",
