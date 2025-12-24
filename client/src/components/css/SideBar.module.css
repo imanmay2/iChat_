@@ -1,0 +1,38 @@
+.main{
+    display:flex;
+    flex-direction: column;
+    background-color: #010710;
+    height:100vh;
+    width:25%;
+}
+
+img{
+    height:90%;
+    width:14%;
+}
+
+.first{
+    display:flex;
+    flex-direction: row;
+    margin:1.5em;
+    gap:0.5em;
+}
+
+.head{
+    margin-top:0.5em;
+    font-weight: bold;
+    font-style: oblique;
+}
+
+.exit{
+    margin-left:60%;
+    margin-top:0.1em;
+    height:100%;
+    width:100%;
+    color:rgb(92, 90, 90);
+}
+
+.exit:hover{
+    color:rgb(128, 125, 125);
+}
+

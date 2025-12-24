@@ -1,8 +1,9 @@
 import styles from "./css/UserChat.module.css"
+import SideBar from "./SideBar";
 const UserChat=()=>{
     return(
         <div className={styles.main}>
-            Welcome to User Chat section.
+            <SideBar/>
         </div>
     )
 }
