@@ -1,17 +1,4 @@
 .main{
-    display: flex;
-    flex-direction: row;
-    border:1px solid white;
-}
-
-.short{
-    height:100%;
-    width:100%;
-}
-
-.details{
-    display: flex;
+    display:flex;
     flex-direction: column;
-    gap:0.5em;
-
 }

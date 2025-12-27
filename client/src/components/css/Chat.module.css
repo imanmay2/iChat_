@@ -1,0 +1,46 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    /* border:1px solid white; */
+    min-height: 100%;
+    min-width: 75%;
+    /* padding: 4em; */
+}
+
+.details {
+    display: flex;
+    flex-direction: row;
+    background: #000811;
+    padding-left:4em;
+    padding-top:1.5em;
+    padding-bottom:1em;
+}
+
+
+.shortform {
+    background: linear-gradient(135deg, #1a73e8, #00b4db);
+    border-radius: 15px;
+    color: whitesmoke;
+    height: fit-content;
+    width: fit-content;
+    padding: 0em;
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+}
+
+.contacts {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1em;
+    padding-top: 0.4em;
+}
+
+.status{
+    color:grey;
+    font-size:small;
+}
