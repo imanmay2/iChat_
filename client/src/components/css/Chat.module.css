@@ -44,3 +44,56 @@
     color:grey;
     font-size:small;
 }
+
+.icons{
+    display:flex;
+    flex-direction: row;
+    gap:3rem;
+    font-size:150%;
+    margin-left:76%;
+    margin-top:1%;
+}
+
+
+.msg{
+    background-color: inherit;
+    /* border:1px solid white; */
+    height: 79%;
+    overflow-y: auto;
+    display:flex;
+    flex-direction: column;
+}   
+
+.send{
+    background: #000811;
+    min-height: 7%;
+    border-radius: 15px;
+    margin-top:0.9rem;
+    display:flex;
+    flex-direction: row;
+
+    gap:2rem;
+    padding-left:2rem;
+
+    padding-top:1.2rem;
+
+    font-size:147%;
+}
+
+.paperClip{
+    margin-top:0.4rem;
+}
+
+
+input{
+    padding:1rem;
+    width:89%;
+    border-radius: 200px;
+    font-size: large;
+    /* height:50%; */
+
+}
+
+.sendIcon{
+    margin-top:0.4rem;
+}
