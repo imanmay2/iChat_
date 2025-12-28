@@ -17,4 +17,3 @@ func PrintUserData(userData []model.User){
 		fmt.Printf("%v : %v\n",key,value);
 	}
 }
-

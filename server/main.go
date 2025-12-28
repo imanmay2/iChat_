@@ -1,43 +1,18 @@
 package main
 
-import ("fmt"
-		"ichat/server/helper"
-		model "ichat/server/model"
-
-	)
+import (
+	"fmt"
+	"github.com/gin-gonic/gin"
+)
 
 func main(){
-	fmt.Println("Welcome to the GoLang server of iChat.");
-	res:=helper.Add(2,6);
-	fmt.Println("Result of the addition is : ",res);
-
+	router:=gin.Default()
 	
+	router.GET("/greet",func(c *gin.Context){
+		fmt.Println("Welcome to the first API build in GoLang!!");
+		c.JSON(200,gin.H{"msg":"Welcome to the first API build in GoLang!!"})
+	})
 
 
-	//Array of structs : 
-
-	var userData []model.User
-	for i:=1;i<3;i++ {
-
-		var u model.User;
-		
-		fmt.Println("First Name : ");
-		fmt.Scan(&u.FirstName);
-
-		fmt.Println("Last Name : ");
-		fmt.Scan(&u.LastName);
-
-		fmt.Println("Email  : ");
-		fmt.Scan(&u.Email);
-
-		fmt.Println("No. of tickets : ");
-		fmt.Scan(&u.Tickets);
-
-		userData=append(userData,u);
-	}
-
-
-	helper.PrintUserData(userData);
-	
-
+	router.Run(":8080");
 }
