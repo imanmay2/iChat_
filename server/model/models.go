@@ -1,8 +1,6 @@
 package model
 
 type User struct {
-	FirstName string
-	LastName string
-	Email string
-	Tickets int
+	Name string ` json:"name" binding:"required" `
+	Email string ` json:"email" binding:"required"  `
 }
