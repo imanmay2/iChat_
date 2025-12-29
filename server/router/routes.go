@@ -9,5 +9,4 @@ func RegisterUser(router *gin.Engine) {
 	user := router.Group("/user")
 	user.GET("/:id", controller.GetUser)
 	user.POST("/", controller.CreateUser)
-
 }

@@ -42,13 +42,13 @@ const Login = ({ setIsLogin }: Props): any => {
       {/* Form for signing in */}
       <form className={styles.form} onSubmit={handleSubmit}>
         <label htmlFor="email">Email</label> <br />
-        <input type="text" id="email" placeholder="&nbsp;&nbsp;xyz@yahoo.com" name="email" value={loginData.email} onChange={handleChange} />
+        <input className={styles.inputLogin} type="text" id="email" placeholder="xyz@yahoo.com" name="email" value={loginData.email} onChange={handleChange} />
 
         <br />
         <br />
 
         <label htmlFor="Password">Password</label> <br />
-        <input type="password" id="Password" placeholder="&nbsp;&nbsp;********" name="password" value={loginData.password} onChange={handleChange} />
+        <input className={styles.inputLogin}  type="password" id="Password" placeholder="********" name="password" value={loginData.password} onChange={handleChange} />
 
         <br /><br />
         <p className={styles.forgotPassword}>Forgot Password?</p> <br />

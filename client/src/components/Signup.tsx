@@ -47,16 +47,16 @@ const Signup = ({setIsLogin}: Props) => {
      {/* Signup Form */}
      <form className={styles.signupForm} onSubmit={handleSubmit}>
         <label htmlFor="username">Name</label>
-        <input type="text" name="name" className={styles.input} placeholder='&nbsp;&nbsp;Manmay Chakraborty' onChange={handleChange}/>
+        <input type="text" name="name" className={styles.input} placeholder='Manmay Chakraborty' onChange={handleChange}/>
         <br />
         <label htmlFor="email">Email</label>
-        <input type="text" name="email" className={styles.input} placeholder='&nbsp;&nbsp;imanmay2@gmail.com' onChange={handleChange}/>
+        <input type="text" name="email" className={styles.input} placeholder='imanmay2@gmail.com' onChange={handleChange}/>
         <br />
         <label htmlFor="password">Password</label>
-        <input type="password" name="password" className={styles.input}  placeholder='&nbsp;&nbsp;********' onChange={handleChange}/>
+        <input type="password" name="password" className={styles.input}  placeholder='********' onChange={handleChange}/>
         <br />
         <label htmlFor="c_password">Confirm Password</label>
-        <input type="password" name="c_password" className={styles.input} placeholder='&nbsp;&nbsp;********' onChange={handleChange}/><br />
+        <input type="password" name="c_password" className={styles.input} placeholder='********' onChange={handleChange}/><br />
         <br /> 
         <button className={styles.signupButton}>Create Account</button> <br />
         <br /><hr /> <br />
