@@ -1,9 +1,9 @@
 import styles from './css/Signup.module.css';
 import type {Props} from '../types';
-import type { registerCredentials } from '../types';
+import type { registerCredentials,Signup } from '../types';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import api from '../api/axios';
 
 const Signup = ({setIsLogin}: Props) => {
   let navigate=useNavigate();
@@ -26,10 +26,20 @@ const Signup = ({setIsLogin}: Props) => {
   }
   
 
-  let handleSubmit=(e:React.FormEvent<HTMLFormElement>)=>{
+  let handleSubmit=async(e:React.FormEvent<HTMLFormElement>):Promise<void>=>{
     e.preventDefault();
     console.log(registerData);
-    navigate(`/chat/${registerData.email}`,{state:registerData});
+
+    let data:Signup={name:registerData.name,email:registerData.email,password:registerData.password}
+    let res=await api.post(`/auth/signup`,data);
+
+    console.log(res.data);
+
+    //set up the flash message for the error.
+
+
+    
+    navigate(`/chat/${registerData.email}`,{state:data});
     setRegisterData({
     name:"",
     email:"",

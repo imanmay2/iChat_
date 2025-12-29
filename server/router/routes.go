@@ -6,7 +6,7 @@ import (
 )
 
 func RegisterUser(router *gin.Engine) {
-	user := router.Group("/user")
-	user.GET("/:id", controller.GetUser)
-	user.POST("/", controller.CreateUser)
+	user := router.Group("/auth")
+	user.GET("/login/:email", controller.GetUser)
+	user.POST("/signup", controller.RegisterUser)
 }

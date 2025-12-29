@@ -3,6 +3,7 @@ import React from "react";
 import type { Props } from '../types';
 import type { loginCredentials } from "../types";
 import { useNavigate } from "react-router-dom";
+import api from "../api/axios";
 
 
 const Login = ({ setIsLogin }: Props): any => {
@@ -22,10 +23,20 @@ const Login = ({ setIsLogin }: Props): any => {
     })
   }
 
-  let handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+  let handleSubmit = async(e: React.FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
     console.log(loginData);
-    navigate(`/chat/${loginData.email}`,{state:loginData});
+
+    const res=await api.get(`/auth/login/${loginData.email}`);
+    console.log("RES from api : "+res.data);
+    // if(res.err){
+    //   //show error , do the UI for that. 
+    //   console.log("Error encountered");
+    //   return;
+    // }
+
+
+    navigate(`/chat/${loginData.email}`,{state:res.data});
     setLoginData({
       email: "",
       password: ""

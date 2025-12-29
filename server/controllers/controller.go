@@ -1,43 +1,33 @@
 package controllers
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	model "ichat/server/model"
 )
 
-func GetUser(c *gin.Context){
-	userInfo:=[]model.User{{
-		Name:"Anwesha",
-		Email:"ianwesha2@gmail.com",
-	},
-	{
-		Name:"Manmay",
-		Email:"ianwesha2@gmail.com",
-	}}
-
-	id:=c.Param("id");
-	for _,obj := range userInfo {
-		if obj.Name==id{
-			c.IndentedJSON(200,obj)
-			return
-		}
+func GetUser(c* gin.Context){
+	email:=c.Param("email")
+	
+	//supabase search
+	fmt.Println("Email got : ",email);
+	UserData:=model.SignUp{
+		Name:"Manmay Chakraborty",
+		Email:"imanmay2@gmail.com",
+		Password:"Manmay1234",
 	}
 
-	c.JSON(400,gin.H{"err":"Data not found!!"})
-	
+
+	c.IndentedJSON(200,UserData)
 }
 
-func CreateUser(c *gin.Context){
-	var user model.User
 
-	if err:=c.ShouldBindJSON(&user); err!=nil{
-		c.IndentedJSON(400,gin.H{"err":err.Error()});
+func RegisterUser(c *gin.Context){
+	var userDetails model.SignUp
+	if err:=c.ShouldBindJSON(&userDetails);err!=nil{
+		c.IndentedJSON(400,gin.H{"Message":"Data not found !! ","err":true})
 		return
 	}
 
-
-	c.IndentedJSON(200,gin.H{
-		"Name":user.Name,
-		"Email":user.Email,
-	})
+	c.IndentedJSON(200,gin.H{"Message":"Data saved successfully."})
 }
