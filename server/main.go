@@ -12,7 +12,5 @@ func main(){
 		fmt.Println("Welcome to the first API build in GoLang!!");
 		c.JSON(200,gin.H{"msg":"Welcome to the first API build in GoLang!!"})
 	})
-
-
 	router.Run(":8080");
 }
