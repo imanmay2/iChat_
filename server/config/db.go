@@ -4,22 +4,25 @@ import (
 	"context"
 	"log"
 	"os"
-	"fmt"
-	pgx "github.com/jackc/pgx/v5"
+	
+
+	"github.com/jackc/pgx/v5/pgxpool"
 )
 
+var DB *pgxpool.Pool 
+
 func ConnectDB() {
-	conn, err := pgx.Connect(context.Background(), os.Getenv("DB_URL"))
+	var err error
+
+	DB, err = pgxpool.New(context.Background(), os.Getenv("DB_URL"))
 	if err != nil {
-		log.Fatalf("Failed to connect to the database: %v", err)
-	}
-	defer conn.Close(context.Background())
-
-	// Example query to test connection
-	var version string
-	if err := conn.QueryRow(context.Background(), "SELECT version()").Scan(&version); err != nil {
-		log.Fatalf("Query failed: %v", err)
+		log.Fatal("Failed to connect to DB:", err)
 	}
 
-	fmt.Println("----------------Connected to:", version)
+	// test connection
+	if err = DB.Ping(context.Background()); err != nil {
+		log.Fatal("DB ping failed:", err)
+	}
+
+	log.Println("---------✅ Database connected successfully")
 }

@@ -12,6 +12,7 @@ import (
 	router "ichat/server/router"
 	"time"
 
+
 	"ichat/server/config"
 
 	"github.com/gin-contrib/cors"
@@ -19,7 +20,7 @@ import (
 
 func main() {
 
-	err := godotenv.Load()
+	err := godotenv.Load(".env")
 	if err != nil {
 		log.Fatal("Error in loading the DB : " + err.Error())
 	}
