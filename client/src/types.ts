@@ -3,6 +3,12 @@ interface loginCredentials {
   password: string;
 }
 
+interface loginResponse{
+  Message:string;
+  username?:string;
+  err:boolean;
+}
+
 interface registerCredentials {
   name: string;
   email: string;
@@ -27,4 +33,4 @@ interface SideBarChats{
   lastTime:string,
   shortFormName:string
 }
-export type {loginCredentials, registerCredentials,Props,SideBarChats,Signup};
+export type {loginCredentials, registerCredentials,loginResponse,Props,SideBarChats,Signup};

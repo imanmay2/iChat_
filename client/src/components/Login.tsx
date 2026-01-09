@@ -1,6 +1,6 @@
 import styles from "./css/login.module.css";
 import React from "react";
-import type { Props } from '../types';
+import type { loginResponse, Props } from '../types';
 import type { loginCredentials } from "../types";
 import { useNavigate } from "react-router-dom";
 import api from "../api/axios";
@@ -27,16 +27,13 @@ const Login = ({ setIsLogin }: Props): any => {
     e.preventDefault();
     console.log(loginData);
 
-    const res=await api.get(`/auth/login/${loginData.email}`);
-    console.log("RES from api : "+res.data);
-    // if(res.err){
-    //   //show error , do the UI for that. 
-    //   console.log("Error encountered");
-    //   return;
-    // }
+    const res=await api.post(`/auth/login`,loginData);
+    // const data:loginResponse=JSON.stringify(res.data);
+    console.log("RES from api : "+res);
+    
+    //check --
 
-
-    navigate(`/chat/${loginData.email}`,{state:res.data});
+    navigate(`/chat/hello`,{state:res.data});
     setLoginData({
       email: "",
       password: ""

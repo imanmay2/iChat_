@@ -1,27 +1,47 @@
 package controllers
 
 import (
-	"fmt"
-	"log"
-	"github.com/gin-gonic/gin"
+	// "fmt"
+	"context"
+	"database/sql"
 	con "ichat/server/config"
 	model "ichat/server/model"
-	"context"
-	
+	"log"
+
+	"github.com/gin-gonic/gin"
 )
 
-func GetUser(c* gin.Context){
-	email:=c.Param("email")
-	
-	//supabase search
-	fmt.Println("-------> Email got : ",email);
-	UserData:=model.SignUp{
-		Name:"Manmay Chakraborty",
-		Email:"imanmay2@gmail.com",
-		Password:"Manmay1234",
+func GetUser(c *gin.Context){
+
+	//Post Request
+	var userLoginDetails model.Login
+	err:=c.ShouldBindJSON(&userLoginDetails);if err!=nil{
+		c.IndentedJSON(400,gin.H{"Message":err.Error(),"err":true})
+		return;
 	}
 
-	c.IndentedJSON(200,UserData)
+
+	log.Println("----->Email got from post request is : ",userLoginDetails.Email);
+
+	query:=` SELECT name,password FROM test_user where email=? ` 
+	row:=con.DB.QueryRow(context.Background(),query,userLoginDetails.Email);
+
+	var dbPass,dbName string
+	err_:=row.Scan(&dbPass,&dbName)
+	
+	if(err_==sql.ErrNoRows){
+		c.IndentedJSON(401,gin.H{"Message":"Invalid Email or Password","err":err_.Error()});
+		return
+	}
+	
+	if err_!=nil{
+		c.IndentedJSON(400,gin.H{"Message":err_.Error(),"err":true})
+		return
+
+	}
+	if userLoginDetails.Password==dbPass{
+		c.IndentedJSON(200,gin.H{"Message":"User Logged in Successfully","username":dbName,"err":false})
+	}
 }
 
 
@@ -42,5 +62,5 @@ func RegisterUser(c *gin.Context){
 
 	log.Println("------------>ID from RegisterUser function is : "+id)
 
-	c.IndentedJSON(200,gin.H{"Message":"Data saved successfully."})
+	c.IndentedJSON(200,gin.H{"Message":"Data saved successfully.","err":false})
 }
