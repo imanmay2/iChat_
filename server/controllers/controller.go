@@ -11,7 +11,6 @@ import (
 )
 
 func GetUser(c *gin.Context) {
-
 	//Post Request
 	var userLoginDetails model.Login
 	err := c.ShouldBindJSON(&userLoginDetails)
@@ -23,10 +22,6 @@ func GetUser(c *gin.Context) {
 	query := ` SELECT name,password FROM test_user where email=$1 `
 	var dbPass, dbName string
 	err_ := con.DB.QueryRow(context.Background(), query, userLoginDetails.Email).Scan(&dbName, &dbPass)
-	// if(err_==sql.ErrNoRows){
-	// 	c.IndentedJSON(200,gin.H{"","err":true})
-	// 	return
-	// }
 	if err_ != nil {
 		c.IndentedJSON(400, gin.H{"Message": "Email is Invalid", "err": true})
 		return
